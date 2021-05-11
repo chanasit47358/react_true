@@ -1,0 +1,92 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+const math = require('mathjs');
+function Inputtaylor({addvalue,addpost}) {
+  const [x, setX] = useState("");
+  const [fx,setFx] = useState("");
+  const [x0,setX0] = useState("");
+  const [number,setNumber] = useState("");
+  function onChangex(e) {
+      setX(e.target.value);
+  }
+  function onChangefx(e){
+      setFx(e.target.value);
+  }
+  function onChangex0(e){
+    setX0(e.target.value);
+}
+function onChangenumber(e){
+  setNumber(e.target.value);
+}
+  function onSubmit(){
+      addvalue(x,x0,fx);
+      cal(x,x0,fx);
+  }
+  function cal(x,x0,fx){
+    let i = 0,y,error;
+    let sum = 0;
+    let node1 = math.parse(fx);
+    let code1 = node1.compile();
+    let scope1 = {
+      x:x
+    }
+    let trueerr = code1.evaluate(scope1);
+    let scope = {
+      x : x0
+    }
+    while(i < number){
+      // if(fx == 1){
+      //   y = code1.evaluate(scope);
+      //   sum = sum+(math.pow((x-x0),i)/math.factorial(i))*y;
+      //   error = math.abs(trueerr - sum);
+      //   addpost(sum,error);
+      //   i += 1;
+      // }
+      // else {
+        code1 = node1.compile();
+        y = code1.evaluate(scope);
+        sum = sum+(math.pow((x-x0),i)/math.factorial(i))*y;
+        error = math.abs(trueerr - sum);
+        addpost(sum,error);
+        i += 1;
+        node1 = math.derivative(node1,'x')
+      // }
+    }
+  }
+  return (
+    <div className="Input">
+      <div className="Input__header"></div>
+      <input
+        className="Input__field"
+        type="text"
+        value={x}
+        onChange={onChangex}
+      />
+      <input
+        className="Input__field"
+        type="text"
+        value={x0}
+        onChange={onChangex0}
+      />
+      <input
+        className="Input__field"
+        type="text"
+        value={fx}
+        onChange={onChangefx}
+      />
+      <input
+        className="Input__field"
+        type="text"
+        value={number}
+        onChange={onChangenumber}
+      />
+      <input type = "submit" onClick ={onSubmit}/>
+    </div>
+  );
+}
+
+Inputtaylor.propTypes = {
+    addvalue: PropTypes.func.isRequired,
+    addpost: PropTypes.func.isRequired
+  };
+export default Inputtaylor;
