@@ -163,6 +163,7 @@ function Sp() {
   }
   return (
     <>
+    <h1>Cubic Spline</h1>
     <Layout style={{background:"white",padding:"0%"}}>
       {sinput && <div>
         <Input
