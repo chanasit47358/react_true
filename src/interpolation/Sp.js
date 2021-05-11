@@ -206,7 +206,7 @@ function Sp() {
                 fontSize: "18px",
                 fontWeight: "bold"
               }}
-              name="number" onChange={(e) => number = e.target.value}/>
+              name="number" onChange={(e) => number = e.target.value} value = {number} />
             {/* </div> */}
             <Button onClick={() => clear()}>Clear</Button>
           </Header>
