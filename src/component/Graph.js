@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import functionPlot from "function-plot";
-const math = require('mathjs');
-function Graph({xx}){
+import { Button } from "antd";
+function Graph({ xx }) {
   function x() {
     let width = 400;
     let height = 500;
@@ -13,19 +13,16 @@ function Graph({xx}){
       grid: true,
       data: [
         {
-          fn:xx,
-        }
-      ]
+          fn: xx,
+        },
+      ],
     });
   }
-      return(
-        <div className="App">
-      <button onClick={x}>Draw</button>
+  return (
+    <div className="App">
+      <Button onClick={x}>Draw</Button>
       <div id="tt"></div>
     </div>
-    )
+  );
 }
-// Graph.propTypes = {
-//     ex: PropTypes.string.isRequired,
-//   };
 export default Graph;

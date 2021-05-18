@@ -1,19 +1,14 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
-// const api = require("./api.json");
 const app = express();
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("api.json");
 const api = low(adapter);
 app.use(cors());
-// app.use(bodyParser.json());
 app.use(express.json());
-// api_key = gwargurainaokayuaquaqulia
-// app.use(bodyParser.urlencoded({ extended: false }));
 app.api = api;
 const options = {
   definition: {
@@ -30,9 +25,7 @@ const options = {
   },
   apis: ["app.js"], // files containing annotations as above
 };
-
 const openapiSpecification = swaggerJsDoc(options);
-
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 /**
  * @swagger
@@ -70,16 +63,11 @@ app.get("/", (req, res) => {
 });
 app.get("/:id", (req, res) => {
   console.log(req.query);
-  // if (req.query.api_key === "panpanalovesuwatchai") {
-    if (!req.app.api.get("api").find({ id: req.params.id }).value()) {
-      res.sendStatus(404);
-    }
-    res.send(req.app.api.get("api").find({ id: req.params.id }).value());
-  // } else {
-    // res.sendStatus(404);
-  // }
+  if (!req.app.api.get("api").find({ id: req.params.id }).value()) {
+    res.sendStatus(404);
+  }
+  res.send(req.app.api.get("api").find({ id: req.params.id }).value());
 });
-
 app.listen(4000, () => {
   console.log("start server");
 });

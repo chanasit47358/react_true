@@ -1,9 +1,6 @@
-import Test from './Main.js';
-import 'antd/dist/antd.css'
-import Plot from 'plotly.js';
+import Test from "./Main.js";
+import "antd/dist/antd.css";
 function App() {
-  return (
-    <Test />
-  )
+  return <Test />;
 }
 export default App;
