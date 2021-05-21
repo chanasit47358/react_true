@@ -70,4 +70,5 @@ app.get("/:id", (req, res) => {
 });
 app.listen(4000, () => {
   console.log("start server");
+  // console.log(api);
 });
