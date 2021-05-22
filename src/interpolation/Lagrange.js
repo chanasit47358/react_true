@@ -186,7 +186,7 @@ function Lagrange() {
   }
   return (
     <>
-      <h1 style={{ margin: "1%", fontSize: "56px" }}>Lagrange</h1>
+      <h1 style={{ margin: "1%", fontSize: "56px" }}>Lagrange Polynomials</h1>
       <Layout style={{ background: "white", padding: "0%" }}>
         {sinput && (
           <div>

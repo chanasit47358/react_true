@@ -207,7 +207,9 @@ function Newton() {
   }
   return (
     <>
-      <h1 style={{ margin: "1%", fontSize: "56px" }}>Newton Divide</h1>
+      <h1 style={{ margin: "1%", fontSize: "56px" }}>
+        Newton Divide-Differeant
+      </h1>
       <Layout style={{ background: "white", padding: "0%" }}>
         {sinput && (
           <div>

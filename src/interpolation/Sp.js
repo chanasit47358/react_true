@@ -167,7 +167,7 @@ function Sp() {
   }
   return (
     <>
-      <h1 style={{ margin: "1%", fontSize: "56px" }}>Cubic Spline</h1>
+      <h1 style={{ margin: "1%", fontSize: "56px" }}>Spline Interpolation</h1>
       <Layout style={{ background: "white", padding: "0%" }}>
         {sinput && (
           <div>
