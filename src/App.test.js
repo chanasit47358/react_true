@@ -1,15 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "./interpolation/Sp.js";
 import App1 from "./linear/jacobi/Jacobi.js";
 import App2 from "./linear/cramer/Cramer.js";
 import App3 from "./linear/conjugate/Conjugate.js";
 import App4 from "./linear/gauss_eli/Gausseli.js";
-test("Cubic Spline", () => {
-  render(<App />);
-  expect(screen.getByText("Cubic Spline")).toBeInTheDocument();
-});
 test("Jacobi", () => {
   render(<App1 />);
   expect(screen.getByText("Jacobi")).toBeInTheDocument();
