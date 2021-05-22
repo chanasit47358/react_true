@@ -84,7 +84,6 @@ function Gauss_seidel() {
       X.push(
         <Input
           style={{
-            margin: "0%",
             marginLeft: "5%",
             width: "30%",
             height: "9%",
@@ -104,7 +103,6 @@ function Gauss_seidel() {
       B.push(
         <Input
           style={{
-            margin: "0%",
             marginLeft: "5%",
             width: "30%",
             height: "9%",
@@ -232,7 +230,6 @@ function Gauss_seidel() {
         X.push(
           <Input
             style={{
-              margin: "0%",
               marginLeft: "5%",
               width: "30%",
               height: "9%",
@@ -252,7 +249,6 @@ function Gauss_seidel() {
         B.push(
           <Input
             style={{
-              margin: "0%",
               marginLeft: "5%",
               width: "30%",
               height: "9%",

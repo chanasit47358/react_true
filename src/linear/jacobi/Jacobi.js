@@ -83,7 +83,6 @@ function Jacobi() {
       X.push(
         <Input
           style={{
-            margin: "0%",
             marginLeft: "5%",
             width: "30%",
             height: "9%",
@@ -103,7 +102,6 @@ function Jacobi() {
       B.push(
         <Input
           style={{
-            margin: "0%",
             marginLeft: "5%",
             width: "30%",
             height: "9%",
@@ -153,7 +151,6 @@ function Jacobi() {
           A.push(
             <Input
               style={{
-                margin: "0%",
                 marginLeft: "5%",
                 width: "6%",
                 height: "9%",
@@ -174,7 +171,6 @@ function Jacobi() {
         X.push(
           <Input
             style={{
-              margin: "0%",
               marginLeft: "5%",
               width: "30%",
               height: "9%",
@@ -194,7 +190,6 @@ function Jacobi() {
         B.push(
           <Input
             style={{
-              margin: "0%",
               marginLeft: "5%",
               width: "30%",
               height: "9%",
