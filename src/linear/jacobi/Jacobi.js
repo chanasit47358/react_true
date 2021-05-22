@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Input, Layout } from "antd";
 import axios from "axios";
-const { Header, Content } = Layout;
+const { Header, Content, Sider } = Layout;
 const math = require("mathjs");
 let A = [],
   B = [],
@@ -85,7 +85,7 @@ function Jacobi() {
           style={{
             margin: "0%",
             marginLeft: "5%",
-            width: "6%",
+            width: "30%",
             height: "9%",
             backgroundColor: "white",
             marginInlineEnd: "5%",
@@ -93,6 +93,7 @@ function Jacobi() {
             color: "black",
             fontSize: "18px",
             fontWeight: "bold",
+            margin: "15%",
           }}
           id={"x" + i}
           key={"x" + i}
@@ -104,7 +105,7 @@ function Jacobi() {
           style={{
             margin: "0%",
             marginLeft: "5%",
-            width: "6%",
+            width: "30%",
             height: "9%",
             backgroundColor: "white",
             marginInlineEnd: "5%",
@@ -112,6 +113,7 @@ function Jacobi() {
             color: "black",
             fontSize: "18px",
             fontWeight: "bold",
+            margin: "15%",
           }}
           id={"b" + i}
           key={"b" + i}
@@ -119,6 +121,8 @@ function Jacobi() {
         />
       );
       A.push(<br />);
+      X.push(<br />);
+      B.push(<br />);
     }
     setSinput(false);
     setSmatrix(true);
@@ -172,7 +176,7 @@ function Jacobi() {
             style={{
               margin: "0%",
               marginLeft: "5%",
-              width: "6%",
+              width: "30%",
               height: "9%",
               backgroundColor: "white",
               marginInlineEnd: "5%",
@@ -180,6 +184,7 @@ function Jacobi() {
               color: "black",
               fontSize: "18px",
               fontWeight: "bold",
+              margin: "15%",
             }}
             id={"x" + (i + 1)}
             key={"x" + (i + 1)}
@@ -191,7 +196,7 @@ function Jacobi() {
             style={{
               margin: "0%",
               marginLeft: "5%",
-              width: "6%",
+              width: "30%",
               height: "9%",
               backgroundColor: "white",
               marginInlineEnd: "5%",
@@ -199,12 +204,15 @@ function Jacobi() {
               color: "black",
               fontSize: "18px",
               fontWeight: "bold",
+              margin: "15%",
             }}
             id={"b" + (i + 1)}
             key={"b" + (i + 1)}
             value={matrixB[i]}
           />
         );
+        X.push(<br />);
+        B.push(<br />);
       }
       setSinput(false);
       setSmatrix(true);
@@ -300,18 +308,24 @@ function Jacobi() {
             </Layout>
             <Layout>
               <Content style={{ background: "white" }}>
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixA</h>
-                <br />
-                {A}
-                <br />
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixX</h>
-                <br />
-                {X}
-                <br />
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixB</h>
-                <br />
-                {B}
+                <div>
+                  <p style={{ marginLeft: "22%" }}>Metrix A</p>
+                  <br />
+                  {A}
+                </div>
               </Content>
+              <Sider style={{ background: "white" }}>
+                <p style={{ marginLeft: "20%" }}>Metrix X</p>
+                <br />
+                <div>{X}</div>
+              </Sider>
+              <Sider style={{ background: "white" }}>
+                <div>
+                  <p style={{ marginLeft: "30%" }}>Metrix B</p>
+                  <br />
+                  {B}
+                </div>
+              </Sider>
             </Layout>
           </Layout>
         )}

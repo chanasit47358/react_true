@@ -49,8 +49,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
  *           type: string
  *         required: true
  *         description: The id of method
- *     security:
- *       - ApiKeyAuth: []
  *     responses:
  *       200:
  *         description: The method description by id
@@ -70,5 +68,4 @@ app.get("/:id", (req, res) => {
 });
 app.listen(4000, () => {
   console.log("start server");
-  // console.log(api);
 });

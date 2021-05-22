@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Input, Layout } from "antd";
 import axios from "axios";
-const { Header, Content } = Layout;
+const { Header, Content, Sider } = Layout;
 const math = require("mathjs");
 let A = [],
   B = [],
@@ -10,7 +10,8 @@ let A = [],
   matrixB = [],
   matrixX = [],
   round = 0,
-  dimention;
+  dimention,
+  ch = true;
 function Gauss_seidel() {
   const [sinput, setSinput] = useState(true);
   const [sans, setSans] = useState(false);
@@ -63,12 +64,14 @@ function Gauss_seidel() {
         A.push(
           <Input
             style={{
-              width: "5%",
-              height: "5%",
-              backgroundColor: "#06d9a0",
+              margin: "0%",
+              marginLeft: "5%",
+              width: "6%",
+              height: "9%",
+              backgroundColor: "white",
               marginInlineEnd: "5%",
               marginBlockEnd: "5%",
-              color: "white",
+              color: "black",
               fontSize: "18px",
               fontWeight: "bold",
             }}
@@ -81,14 +84,17 @@ function Gauss_seidel() {
       X.push(
         <Input
           style={{
-            width: "5%",
-            height: "5%",
-            backgroundColor: "#06d9a0",
+            margin: "0%",
+            marginLeft: "5%",
+            width: "30%",
+            height: "9%",
+            backgroundColor: "white",
             marginInlineEnd: "5%",
             marginBlockEnd: "5%",
-            color: "white",
+            color: "black",
             fontSize: "18px",
             fontWeight: "bold",
+            margin: "15%",
           }}
           id={"x" + i}
           key={"x" + i}
@@ -98,14 +104,17 @@ function Gauss_seidel() {
       B.push(
         <Input
           style={{
-            width: "5%",
-            height: "5%",
-            backgroundColor: "#06d9a0",
+            margin: "0%",
+            marginLeft: "5%",
+            width: "30%",
+            height: "9%",
+            backgroundColor: "white",
             marginInlineEnd: "5%",
             marginBlockEnd: "5%",
-            color: "white",
+            color: "black",
             fontSize: "18px",
             fontWeight: "bold",
+            margin: "15%",
           }}
           id={"b" + i}
           key={"b" + i}
@@ -113,12 +122,25 @@ function Gauss_seidel() {
         />
       );
       A.push(<br />);
+      X.push(<br />);
+      B.push(<br />);
     }
     setSinput(false);
     setSmatrix(true);
   }
+  function cherror() {
+    console.log(2);
+    for (let i = 0; i < dimention; i++) {
+      if (matrixA[i][i] === 0) {
+        alert("You in put 0 in Array[i][i]");
+        clear();
+        ch = false;
+      }
+    }
+  }
   function cal() {
     init();
+    cherror();
     let error;
     let sum;
     let tranform = JSON.parse(JSON.stringify(matrixA));
@@ -212,7 +234,7 @@ function Gauss_seidel() {
             style={{
               margin: "0%",
               marginLeft: "5%",
-              width: "6%",
+              width: "30%",
               height: "9%",
               backgroundColor: "white",
               marginInlineEnd: "5%",
@@ -220,6 +242,7 @@ function Gauss_seidel() {
               color: "black",
               fontSize: "18px",
               fontWeight: "bold",
+              margin: "15%",
             }}
             id={"x" + (i + 1)}
             key={"x" + (i + 1)}
@@ -231,7 +254,7 @@ function Gauss_seidel() {
             style={{
               margin: "0%",
               marginLeft: "5%",
-              width: "6%",
+              width: "30%",
               height: "9%",
               backgroundColor: "white",
               marginInlineEnd: "5%",
@@ -239,12 +262,15 @@ function Gauss_seidel() {
               color: "black",
               fontSize: "18px",
               fontWeight: "bold",
+              margin: "15%",
             }}
             id={"b" + (i + 1)}
             key={"b" + (i + 1)}
             value={matrixB[i]}
           />
         );
+        X.push(<br />);
+        B.push(<br />);
       }
       setSinput(false);
       setSmatrix(true);
@@ -291,23 +317,29 @@ function Gauss_seidel() {
             </Layout>
             <Layout>
               <Content style={{ background: "white" }}>
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixA</h>
-                <br />
-                {A}
-                <br />
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixX</h>
-                <br />
-                {X}
-                <br />
-                <h style={{ margin: "21.5%", fontSize: "26px" }}>MatrixB</h>
-                <br />
-                {B}
+                <div>
+                  <p style={{ marginLeft: "22%" }}>Metrix A</p>
+                  <br />
+                  {A}
+                </div>
               </Content>
+              <Sider style={{ background: "white" }}>
+                <p style={{ marginLeft: "20%" }}>Metrix X</p>
+                <br />
+                <div>{X}</div>
+              </Sider>
+              <Sider style={{ background: "white" }}>
+                <div>
+                  <p style={{ marginLeft: "30%" }}>Metrix B</p>
+                  <br />
+                  {B}
+                </div>
+              </Sider>
             </Layout>
           </Layout>
         )}
 
-        {sans && (
+        {ch && sans && (
           <div>
             <Table columns={columns} dataSource={ans} />
           </div>
