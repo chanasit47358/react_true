@@ -93,7 +93,7 @@ class Test extends React.Component {
                     Spline Interpolation
                   </Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub3" title="Regresstion">
+                <SubMenu key="sub4" title="Regresstion">
                   <Menu.Item key="18" onClick={this.onClick}>
                     Linear
                   </Menu.Item>

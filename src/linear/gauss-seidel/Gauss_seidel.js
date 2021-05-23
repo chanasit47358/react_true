@@ -11,7 +11,9 @@ let A = [],
   matrixX = [],
   round = 0,
   dimention,
-  ch = true;
+  ch = true,
+  calculate = true,
+  cherror = true;
 function Gauss_seidel() {
   const [sinput, setSinput] = useState(true);
   const [sans, setSans] = useState(false);
@@ -57,6 +59,8 @@ function Gauss_seidel() {
     round = 0;
     X = [];
     matrixX = [];
+    calculate = true;
+    cherror = true;
   }
   function creatematrix() {
     for (let i = 1; i <= dimention; i++) {
@@ -126,26 +130,65 @@ function Gauss_seidel() {
     setSinput(false);
     setSmatrix(true);
   }
-  function cherror() {
-    console.log(2);
-    for (let i = 0; i < dimention; i++) {
-      if (matrixA[i][i] === 0) {
-        alert("You in put 0 in Array[i][i]");
-        clear();
-        ch = false;
+  // function cherror() {
+  //   console.log(2);
+  //   for (let i = 0; i < dimention; i++) {
+  //     if (matrixA[i][i] === 0) {
+  //       alert("You in put 0 in Array[i][i]");
+  //       clear();
+  //       ch = false;
+  //     }
+  //   }
+  // }
+  function chzero() {
+    while (calculate) {
+      let row = 0;
+      for (let i = 0; i < dimention; i++) {
+        if (matrixA[i][i] === 0) {
+          console.log("1");
+          row = i;
+          console.log("row ", row);
+          break;
+        }
+        if (i === dimention - 1) {
+          calculate = false;
+        }
       }
+      for (let i = 0; i < dimention; i++) {
+        if (matrixA[i][row] !== 0) {
+          console.log("matrixabefore ", matrixA);
+          console.log("matrixbbefore ", matrixB);
+          let temp = 0;
+          temp = matrixB[row];
+          matrixB[row] = matrixB[i];
+          matrixB[i] = temp;
+          for (let j = 0; j < dimention; j++) {
+            temp = 0;
+            console.log("2");
+            temp = matrixA[row][j];
+            matrixA[row][j] = matrixA[i][j];
+            matrixA[i][j] = temp;
+          }
+          console.log("matrixafter ", matrixA);
+          console.log("matrixbafter ", matrixB);
+          break;
+        }
+      }
+      console.log("calculate", calculate);
     }
+    console.log(matrixA);
+    return;
   }
   function cal() {
     init();
-    cherror();
+    chzero();
     let error;
     let sum;
     let tranform = JSON.parse(JSON.stringify(matrixA));
     let tranform1 = JSON.parse(JSON.stringify(matrixB));
     let tranform2 = JSON.parse(JSON.stringify(matrixX));
     let allans = tranform2;
-    while (round < 4) {
+    while (cherror) {
       for (let i = 0; i < dimention; i++) {
         // row
         sum = tranform1[i];
@@ -166,6 +209,9 @@ function Gauss_seidel() {
         });
         allans[i] = sum;
         sum = 0;
+      }
+      if (error < 0.0000001) {
+        cherror = false;
       }
       round++;
     }
