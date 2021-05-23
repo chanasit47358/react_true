@@ -130,16 +130,6 @@ function Gauss_seidel() {
     setSinput(false);
     setSmatrix(true);
   }
-  // function cherror() {
-  //   console.log(2);
-  //   for (let i = 0; i < dimention; i++) {
-  //     if (matrixA[i][i] === 0) {
-  //       alert("You in put 0 in Array[i][i]");
-  //       clear();
-  //       ch = false;
-  //     }
-  //   }
-  // }
   function chzero() {
     while (calculate) {
       let row = 0;
@@ -154,7 +144,10 @@ function Gauss_seidel() {
           calculate = false;
         }
       }
-      for (let i = 0; i < dimention; i++) {
+      for (let i = dimention - 1; i >= 0; i--) {
+        if (calculate === false) {
+          break;
+        }
         if (matrixA[i][row] !== 0) {
           console.log("matrixabefore ", matrixA);
           console.log("matrixbbefore ", matrixB);
@@ -177,6 +170,7 @@ function Gauss_seidel() {
       console.log("calculate", calculate);
     }
     console.log(matrixA);
+    console.log(matrixB);
     return;
   }
   function cal() {
@@ -188,6 +182,7 @@ function Gauss_seidel() {
     let tranform1 = JSON.parse(JSON.stringify(matrixB));
     let tranform2 = JSON.parse(JSON.stringify(matrixX));
     let allans = tranform2;
+    // while (round < 100) {
     while (cherror) {
       for (let i = 0; i < dimention; i++) {
         // row
@@ -198,6 +193,8 @@ function Gauss_seidel() {
           }
         }
         sum = sum / tranform[i][i];
+        sum = sum.toFixed(6);
+
         error = math.abs((sum - allans[i]) / sum);
         error = error.toFixed(6);
         ans.push({
@@ -210,7 +207,7 @@ function Gauss_seidel() {
         allans[i] = sum;
         sum = 0;
       }
-      if (error < 0.0000001) {
+      if (error < 0.000001) {
         cherror = false;
       }
       round++;
